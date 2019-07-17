@@ -1,14 +1,28 @@
 <template>
   <div class="container">
     <app-nav />
-    <div class="container">
-      <div v-for="pokedex in getPokedex" :key="pokedex.id">
-        <div class="row" id="item">
-          <div v-for="pokemon in pokedex" :key="pokemon.id">
-            <router-link :to="'/'+pokemon.id">
-              <app-item :pokemon="pokemon"></app-item>
-            </router-link>
+    <div class="container" id="content">
+      <div class="container">
+        <form>
+          <div class="form-group row">
+            <input
+              class="form-control col-sm-10"
+              type="search"
+              v-model="searchWord"
+              placeholder="Search pokemon"
+            />
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-primary btn-block">Search</button>
+            </div>
           </div>
+        </form>
+      </div>
+      <div class="row" id="item">
+        <div v-for="pokemon in filterPokemon" :key="pokemon.id">
+          <router-link :to="'/'+pokemon.id">
+            <app-item :pokemon="pokemon"></app-item>
+          </router-link>
+          <hr class="my-4" />
         </div>
       </div>
     </div>
@@ -19,8 +33,8 @@
 <script>
 import AppNav from "@/components/Header/navbar";
 import AppItem from "@/components/Item/item";
-import AppFooter from "@/components/Footer/footer"
-import { mapGetters, mapActions } from "vuex";
+import AppFooter from "@/components/Footer/footer";
+import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -30,16 +44,23 @@ export default {
   },
   data() {
     return {
-      pokedex: []
+      pokemons: [],
     };
   },
-  computed: mapGetters(["getPokedex"]),
-  methods: {
-    ...mapActions(["fetchPokedex"])
+  computed: {
+    filterPokemon(){
+      return this.$store.getters.getFilteredWord|| this.$store.getters.allPokemon
+    },
+    searchWord:{
+      get(){
+        return this.$store.state.searchWord
+      },
+      set(value){
+        this.$store.dispatch('FILTERED_POKEMONS',value)
+      }
+    }
   },
-  created() {
-    this.fetchPokedex();
-  }
+  
 };
 </script>
 

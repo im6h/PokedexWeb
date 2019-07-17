@@ -1,9 +1,11 @@
 <template>
   <div class="container d-flex justify-content-around">
-    <div class=" text-center">
+    <div>
       <img :src="pokemon.img" />
       <p >{{pokemon.name}}</p>
+        
     </div>
+    
   </div>
 </template>
 
