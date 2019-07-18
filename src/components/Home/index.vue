@@ -20,7 +20,7 @@
       </div>
       <div class="row" id="item">
         <div v-for="pokemon in filterPokemon" :key="pokemon.id">
-          <router-link  :to="'/'+pokemon.id">
+          <router-link :to="'/'+pokemon.num">
             <app-item :pokemon="pokemon"></app-item>
           </router-link>
         </div>
