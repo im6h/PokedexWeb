@@ -1,9 +1,8 @@
 <template>
   <div class="container d-flex justify-content-around">
-    <div>
-      <img :src="pokemon.img" />
+    <div class="jumbotron">
+      <img  :src="pokemon.img" />
       <p >{{pokemon.name}}</p>
-        
     </div>
     
   </div>
@@ -17,4 +16,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

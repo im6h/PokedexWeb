@@ -9,6 +9,7 @@
               class="form-control col-sm-10"
               type="search"
               v-model="searchWord"
+              @input="filter"
               placeholder="Search pokemon"
             />
             <div class="col-sm-2">
@@ -19,11 +20,11 @@
       </div>
       <div class="row" id="item">
         <div v-for="pokemon in filterPokemon" :key="pokemon.id">
-          <router-link :to="'/'+pokemon.id">
+          <router-link  :to="'/'+pokemon.id">
             <app-item :pokemon="pokemon"></app-item>
           </router-link>
-          <hr class="my-4" />
         </div>
+        <hr class="my-4" />
       </div>
     </div>
     <app-footer></app-footer>
@@ -44,23 +45,38 @@ export default {
   },
   data() {
     return {
-      pokemons: [],
+      pokemons: []
     };
   },
   computed: {
-    filterPokemon(){
-      return this.$store.getters.getFilteredWord|| this.$store.getters.allPokemon
+    filterPokemon() {
+      if (this.searchWord) {
+        return this.$store.getters.filterPokemon;
+      } else {
+        return this.$store.getters.allPokemon;
+      }
     },
-    searchWord:{
-      get(){
-        return this.$store.state.searchWord
+    searchWord: {
+      get() {
+        return this.$store.getters.searchWord;
       },
-      set(value){
-        this.$store.dispatch('FILTERED_POKEMONS',value)
+      set(value) {
+        this.$store.commit("SET_WORD", value);
       }
     }
   },
-  
+  methods: {
+    filter() {
+      if (this.searchWord) {
+        return this.$store.dispatch("FILTERED_POKEMONS");
+      } else {
+        return this.$store.dispatch("ALL_POKEMON");
+      }
+    }
+  },
+  created() {
+    return this.$store.dispatch("ALL_POKEMON");
+  }
 };
 </script>
 
