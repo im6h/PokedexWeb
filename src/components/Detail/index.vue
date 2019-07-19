@@ -1,9 +1,13 @@
 <template>
   <div class="container">
-    <app-nav />
+    <div >
+        <router-link :to="'/'">
+          <app-nav></app-nav>
+        </router-link>
+    </div>
     <div class="container-fluid">
       <div class="jumbotron">
-        <div class="media" id="item" v-for="pokemon in getPokemon" :key="pokemon.id">
+        <div class="media" id="item" v-for="pokemon in getPokemon" :key="pokemon">
           <div class="align-self-center mr-3 text-center" :src="pokemon.img" :alt="pokemon.name">
             <img class="rounded" :src="pokemon.img" :alt="pokemon.name" />
           </div>
@@ -25,25 +29,21 @@
             <p>
               Next evolution :
               <span
+                v-on:click="getEvoPokemon"
                 v-for="next_evolution in pokemon.next_evolution"
                 :key="next_evolution"
               >
-                <router-link
-                  @click="getPokemon"
-                  :to="'/'+next_evolution.num"
-                >[{{next_evolution.name}}]</router-link>
+                <router-link :to="'/'+next_evolution.num">[{{next_evolution.name}}]</router-link>
               </span>
             </p>
             <p>
               Prev evolution :
               <span
+                @click="getEvoPokemon"
                 v-for="prev_evolution in pokemon.prev_evolution"
                 :key="prev_evolution"
               >
-                <router-link
-                  @click="getPokemon"
-                  :to="'/'+prev_evolution.num"
-                >[{{prev_evolution.name}}]</router-link>
+                <router-link :to="'/'+prev_evolution.num">[{{prev_evolution.name}}]</router-link>
               </span>
             </p>
           </div>
@@ -72,6 +72,12 @@ export default {
   computed: {
     getPokemon() {
       return this.$store.getters.pokemon;
+    },
+    
+  },
+  methods:{
+    getEvoPokemon() {
+      location.reload();
     }
   },
   created() {
@@ -86,7 +92,7 @@ export default {
 </script>
 
 <style scoped>
-#item{
+#item {
   margin-left: 10%;
 }
 </style>

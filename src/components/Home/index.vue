@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <app-nav />
     <div class="container" id="content">
+      <app-nav />
       <div class="container">
-        <form>
+        <form >
           <div class="form-group row">
             <input
               class="form-control col-sm-10"
@@ -83,5 +83,12 @@ export default {
 <style scoped>
 #item {
   margin-top: 10px;
+}
+#form{
+  margin-top:5px;
+}
+#navbar{
+  margin-top:60px;
+
 }
 </style>
