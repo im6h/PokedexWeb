@@ -1,6 +1,6 @@
 # pokedex
 
-> A Vue.js project
+> A Vue.js project with vuex, axios 
 
 ## Build Setup
 

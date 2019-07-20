@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <div >
-        <router-link :to="'/'">
-          <app-nav></app-nav>
-        </router-link>
-    </div>
+    <app-nav></app-nav>
     <div class="container-fluid">
       <div class="jumbotron">
         <div class="media" id="item" v-for="pokemon in getPokemon" :key="pokemon">
@@ -33,7 +29,7 @@
                 v-for="next_evolution in pokemon.next_evolution"
                 :key="next_evolution"
               >
-                <router-link :to="'/'+next_evolution.num">[{{next_evolution.name}}]</router-link>
+                <router-link :to="'/'+next_evolution.num" replace>[{{next_evolution.name}}]</router-link>
               </span>
             </p>
             <p>
@@ -43,7 +39,7 @@
                 v-for="prev_evolution in pokemon.prev_evolution"
                 :key="prev_evolution"
               >
-                <router-link :to="'/'+prev_evolution.num">[{{prev_evolution.name}}]</router-link>
+                <router-link :to="'/'+prev_evolution.num" replace>[{{prev_evolution.name}}]</router-link>
               </span>
             </p>
           </div>
@@ -72,11 +68,13 @@ export default {
   computed: {
     getPokemon() {
       return this.$store.getters.pokemon;
-    },
-    
+    }
   },
-  methods:{
+  methods: {
     getEvoPokemon() {
+      location.reload();
+    },
+    goBack() {
       location.reload();
     }
   },
