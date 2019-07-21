@@ -3,29 +3,30 @@
     <div class="container" id="content">
       <app-nav />
       <div class="container">
-        <form >
-          <div class="form-group row">
-            <input
-              class="form-control col-sm-10"
-              type="search"
-              v-model="searchWord"
-              @input="filter"
-              placeholder="Search pokemon"
-            />
-            <div class="col-sm-2">
-              <button type="submit" class="btn btn-primary btn-block">Search</button>
+        <transition name="fade" appear>
+          <form>
+            <div class="form-group row">
+              <input
+                class="form-control col-sm-10"
+                type="search"
+                v-model="searchWord"
+                @input="filter"
+                placeholder="Search pokemon"
+              />
+              <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </transition>
       </div>
-      <div class="row" id="item">
+      <transition-group name="fade" tag="div" class="row" >
         <div v-for="pokemon in filterPokemon" :key="pokemon.id">
           <router-link :to="'/'+pokemon.num">
             <app-item :pokemon="pokemon"></app-item>
           </router-link>
         </div>
-        <hr class="my-4" />
-      </div>
+      </transition-group>
     </div>
     <app-footer></app-footer>
   </div>
@@ -84,11 +85,25 @@ export default {
 #item {
   margin-top: 10px;
 }
-#form{
-  margin-top:5px;
+#form {
+  margin-top: 5px;
 }
-#navbar{
-  margin-top:60px;
-
+#navbar {
+  margin-top: 60px;
+}
+/* css animation */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 5s;
+}
+.fade-leave {
+}
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-move{
+  transition: transform 1s;
 }
 </style>

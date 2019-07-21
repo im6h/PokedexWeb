@@ -1,14 +1,28 @@
 <template>
   <div>
-    <h2 class="display-4">Pokedex version 1</h2>
+    <transition name="fade" appear>
+      <h2 class="display-4">Pokedex version 1</h2>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Navbar",
+  name: "Navbar"
 };
 </script>
 
-<style>
+<style scoped>
+/* css animation */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 1s;
+}
+.fade-leave {
+}
+.fade-leave-active {
+  opacity: 0;
+}
 </style>
