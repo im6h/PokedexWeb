@@ -19,7 +19,8 @@ npm run build --report
 ```
 ### Homepage
 
-![Home](https://user-images.githubusercontent.com/35485655/61551126-8544f180-aa7e-11e9-8de3-19953da9c83a.png)
+![home](https://user-images.githubusercontent.com/35485655/61782545-6a80cd00-ae30-11e9-991f-8194909a6bd5.png)
 ### Detailpage
 
-![Detail](https://user-images.githubusercontent.com/35485655/61551125-8544f180-aa7e-11e9-9721-6caecdbdbda2.png)
+![detail](https://user-images.githubusercontent.com/35485655/61782544-6a80cd00-ae30-11e9-9b6e-9a610523f417.png)
+
