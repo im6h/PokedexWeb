@@ -2,6 +2,7 @@
   <div class="container d-flex justify-content-around">
     <transition name="fade" appear>
       <div class="jumbotron">
+        <p class="text-secondary">#{{pokemon.num}}</p>
         <img :src="pokemon.img" />
         <p>{{pokemon.name}}</p>
       </div>

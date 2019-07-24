@@ -1,26 +1,28 @@
+// TODO: làm cho sroll mượt hơn trong khi lăn chuột
 <template>
   <div class="container">
     <div class="container" id="content">
-      <app-nav />
       <div class="container">
         <transition name="fade" appear>
-          <form>
-            <div class="form-group row">
-              <input
-                class="form-control col-sm-10"
-                type="search"
-                v-model="searchWord"
-                @input="filter"
-                placeholder="Search pokemon"
-              />
-              <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary btn-block">Search</button>
+          <nav class="conatainer navbar navbar-light bg-dark fixed-top">
+            <app-nav class="w-25" />
+            <form class="w-75">
+              <div class="form-row">
+                <div class="col-8">
+                  <input
+                    class="form-control"
+                    type="search"
+                    v-model="searchWord"
+                    @input="filter"
+                    placeholder="Search pokemon"
+                  />
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </nav>
         </transition>
       </div>
-      <transition-group name="fade" tag="div" class="row" >
+      <transition-group name="fade" tag="div" class="row justify-content-md-center custom">
         <div v-for="pokemon in filterPokemon" :key="pokemon.id">
           <router-link :to="'/'+pokemon.num">
             <app-item :pokemon="pokemon"></app-item>
@@ -82,28 +84,25 @@ export default {
 </script>
 
 <style scoped>
-#item {
-  margin-top: 10px;
+
+.custom{
+  margin-top:80px;
 }
-#form {
-  margin-top: 5px;
-}
-#navbar {
-  margin-top: 60px;
-}
+
+
 /* css animation */
 .fade-enter {
   opacity: 0;
 }
 .fade-enter-active {
-  transition: opacity 5s;
+  transition: opacity 2s;
 }
 .fade-leave {
 }
 .fade-leave-active {
   opacity: 0;
 }
-.fade-move{
-  transition: transform 1s;
+.fade-move {
+  transition: transform 0.4s;
 }
 </style>
