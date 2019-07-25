@@ -103,6 +103,6 @@ export default {
   opacity: 0;
 }
 .fade-move {
-  transition: transform 0.4s;
+  transition: transform 0.2s;
 }
 </style>
