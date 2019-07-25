@@ -1,11 +1,11 @@
 // TODO: làm cho sroll mượt hơn trong khi lăn chuột
 <template>
-  <div class="container">
-    <div class="container" id="content">
+  <div class="container" id="content">
+    <div class="container" >
       <div class="container">
         <transition name="fade" appear>
           <nav class="conatainer navbar navbar-light bg-dark fixed-top">
-            <app-nav class="w-25" />
+            <app-nav class="w-25 text-light" />
             <form class="w-75">
               <div class="form-row">
                 <div class="col-8">
@@ -84,7 +84,10 @@ export default {
 </script>
 
 <style scoped>
-
+#content{
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
 .custom{
   margin-top:80px;
 }

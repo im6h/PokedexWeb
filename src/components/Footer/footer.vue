@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <div >
     <transition name="fade" appear>
       <footer>
         <p>Copyright &copy; 2019 by Vu Hai Dang</p>

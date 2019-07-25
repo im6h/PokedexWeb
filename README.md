@@ -17,9 +17,9 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-### Homepage
+### Home page
 
-![Home](https://user-images.githubusercontent.com/35485655/61551126-8544f180-aa7e-11e9-8de3-19953da9c83a.png)
-### Detailpage
+![homepage](https://user-images.githubusercontent.com/35485655/61884539-9ed6b500-af26-11e9-83f0-0e17287f9923.png)
+### Detail page
 
-![Detail](https://user-images.githubusercontent.com/35485655/61551125-8544f180-aa7e-11e9-9721-6caecdbdbda2.png)
+![detail](https://user-images.githubusercontent.com/35485655/61884540-9ed6b500-af26-11e9-9f79-bdffd90af356.png)

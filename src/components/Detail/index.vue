@@ -1,18 +1,16 @@
-// TODO: style màu cho type của pokemon : pass
-//  25/7: style ảnh lên chính giữa, còn thống tin xuống dưới
 
 <template>
-  <div class="container">
-    <app-nav></app-nav>
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <app-nav class="font-weight-bold mb-5 mt-2"></app-nav>
+    <div class="container">
       <transition name="fade" appear>
-        <div class="jumbotron">
-          <div class="media" id="item" v-for="pokemon in getPokemon" :key="pokemon.id">
-            <div class="align-self-center mr-3 text-center" :src="pokemon.img" :alt="pokemon.name">
+        <div class="col" >
+          <div class v-for="pokemon in getPokemon" :key="pokemon.id">
+            <div class="text-center custom-img" >
               <img class="rounded" :src="pokemon.img" :alt="pokemon.name" />
             </div>
-            <div class="media-body">
-              <h5 class="mt-0 text-center">{{pokemon.name}}</h5>
+            <div class="col jumbotron custom-info">
+              <h3 class="mt-0 text-center">{{pokemon.name}}</h3>
               <p>Height: {{pokemon.height}}</p>
               <p>Weith: {{pokemon.weight}}</p>
               <p>
@@ -38,21 +36,6 @@
                 </span>
               </p>
               <p>
-                Next evolution:
-                <span
-                  v-on:click="getEvoPokemon"
-                  v-for="next_evolution in pokemon.next_evolution"
-                  :key="next_evolution.pokemon"
-                  class="btn btn-success m-2"
-                >
-                  <router-link
-                    :to="'/'+next_evolution.num"
-                    replace
-                    class="text-light"
-                  >{{next_evolution.name}}</router-link>
-                </span>
-              </p>
-              <p>
                 Prev evolution:
                 <span
                   @click="getEvoPokemon"
@@ -67,12 +50,27 @@
                   >{{prev_evolution.name}}</router-link>
                 </span>
               </p>
+              <p>
+                Next evolution:
+                <span
+                  v-on:click="getEvoPokemon"
+                  v-for="next_evolution in pokemon.next_evolution"
+                  :key="next_evolution.pokemon"
+                  class="btn btn-success m-2"
+                >
+                  <router-link
+                    :to="'/'+next_evolution.num"
+                    replace
+                    class="text-light"
+                  >{{next_evolution.name}}</router-link>
+                </span>
+              </p>
             </div>
           </div>
         </div>
       </transition>
     </div>
-    <app-footer />
+    <app-footer class="fixed-bottom" />
   </div>
 </template>
 
@@ -89,32 +87,32 @@ export default {
   data() {
     return {
       pokemon: {},
-      type:{
-        "Fire":"#FF6144",
-        "Water":"#52A9FF",
-        "Ghost": "#7D7DC5",
-        "Grass":"#8CD46F",
-        "Steel":"#B7B7C5",
-        "Dragon":"#8C7DF1",
-        "Ground":"#E2C56F",
-        "Electric":"#FFD452",
-        "Dark":"#8C6F61",
-        "Normal": "#B7B7A9",
-        "Psychic":"#FF6FA9",
-        "Bug":"#B7C544",
-        "Rock":"#C5B77D",
-        "Fighting":"#C56F61",
-        "Ice": "#7DD4FF",
-        "Flying":"#98A7FF",
-        "Poison":"#B76FA9",
-        "Fairy":"#F1A9F1",
-      },
+      type: {
+        Fire: "#FF6144",
+        Water: "#52A9FF",
+        Ghost: "#7D7DC5",
+        Grass: "#8CD46F",
+        Steel: "#B7B7C5",
+        Dragon: "#8C7DF1",
+        Ground: "#E2C56F",
+        Electric: "#FFD452",
+        Dark: "#8C6F61",
+        Normal: "#B7B7A9",
+        Psychic: "#FF6FA9",
+        Bug: "#B7C544",
+        Rock: "#C5B77D",
+        Fighting: "#C56F61",
+        Ice: "#7DD4FF",
+        Flying: "#98A7FF",
+        Poison: "#B76FA9",
+        Fairy: "#F1A9F1"
+      }
     };
   },
   computed: {
     getPokemon() {
       return this.$store.getters.pokemon;
-    },
+    }
   },
   methods: {
     getEvoPokemon() {
@@ -137,8 +135,24 @@ export default {
 #item {
   margin-left: 10%;
 }
-.custom{
+.custom {
   width: 6rem;
+}
+.custom-img {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+.custom-info {
+  position: absolute;
+  z-index: 1;
+  margin-top: 4rem;
+}
+.custom-content{
+  background-color: black;
 }
 .fade-enter {
   opacity: 0;
