@@ -22,10 +22,10 @@
           </nav>
         </transition>
       </div>
-      <transition-group name="fade" tag="div" class="row justify-content-md-center custom">
-        <div v-for="pokemon in filterPokemon" :key="pokemon.id">
+      <transition-group name="fade" tag="div" class="row justify-content-center custom">
+        <div v-for="pokemon in filterPokemon" :key="pokemon.id" class="col-lg-3 w-100">
           <router-link :to="'/'+pokemon.num">
-            <app-item :pokemon="pokemon"></app-item>
+            <app-item :pokemon="pokemon" class="w-100"></app-item>
           </router-link>
         </div>
       </transition-group>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="fade" appear>
-      <h2>Pokedex version 1</h2>
+      <h5>Pokedex </h5>
     </transition>
   </div>
 </template>
